@@ -982,11 +982,11 @@ def find_cutoffs(x,y,crdist,deltas):
     diag_blank_width = int((crdist+20*deltas)/deltas)
     # distance matrix for centerline points:
     dist = distance.cdist(np.array([x,y]).T,np.array([x,y]).T)
-    dist[dist>crdist] = np.NaN # set all values that are larger than the cutoff threshold to NaN
+    dist[dist>crdist] = np.nan # set all values that are larger than the cutoff threshold to NaN
     # set matrix to NaN along the diagonal zone:
     for k in range(-diag_blank_width,diag_blank_width+1):
         rows, cols = kth_diag_indices(dist,k)
-        dist[rows,cols] = np.NaN
+        dist[rows,cols] = np.nan
     i1, i2 = np.where(~np.isnan(dist))
     ind1 = i1[np.where(i1<i2)[0]] # get rid of unnecessary indices
     ind2 = i2[np.where(i1<i2)[0]] # get rid of unnecessary indices
